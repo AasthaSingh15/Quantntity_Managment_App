@@ -1,0 +1,77 @@
+package com.apps.quantitymeasurement;
+
+public class QuantityMeasurementApp {
+
+    // -------------------- FEET CLASS (UC1) --------------------
+    public static class Feet {
+        private final double value;
+
+        public Feet(double value) {
+            this.value = value;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) return true;                  // Same reference
+            if (obj == null) return false;                 // Null check
+            if (this.getClass() != obj.getClass()) return false; // Type check
+
+            Feet other = (Feet) obj;
+            return Double.compare(this.value, other.value) == 0;
+        }
+    }
+
+    // -------------------- INCHES CLASS (UC2) --------------------
+    public static class Inches {
+        private final double value;
+
+        public Inches(double value) {
+            this.value = value;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) return true;
+            if (obj == null) return false;
+            if (this.getClass() != obj.getClass()) return false;
+
+            Inches other = (Inches) obj;
+            return Double.compare(this.value, other.value) == 0;
+        }
+    }
+
+    // -------------------- FEET DEMO --------------------
+    public static void demonstrateFeetEquality() {
+        Feet f1 = new Feet(1.0);
+        Feet f2 = new Feet(1.0);
+        Feet f3 = new Feet(2.0);
+
+        System.out.println("Feet Same Value (1.0 vs 1.0): " + f1.equals(f2)); // true
+        System.out.println("Feet Different Value (1.0 vs 2.0): " + f1.equals(f3)); // false
+        System.out.println("Feet Null Comparison: " + f1.equals(null)); // false
+        System.out.println("Feet Same Reference: " + f1.equals(f1)); // true
+        System.out.println("Feet Different Class: " + f1.equals("1.0")); // false
+    }
+
+    // -------------------- INCHES DEMO --------------------
+    public static void demonstrateInchesEquality() {
+        Inches i1 = new Inches(1.0);
+        Inches i2 = new Inches(1.0);
+        Inches i3 = new Inches(2.0);
+
+        System.out.println("Inches Same Value (1.0 vs 1.0): " + i1.equals(i2)); // true
+        System.out.println("Inches Different Value (1.0 vs 2.0): " + i1.equals(i3)); // false
+        System.out.println("Inches Null Comparison: " + i1.equals(null)); // false
+        System.out.println("Inches Same Reference: " + i1.equals(i1)); // true
+        System.out.println("Inches Different Class: " + i1.equals("1.0")); // false
+    }
+
+    // -------------------- MAIN METHOD --------------------
+    public static void main(String[] args) {
+        System.out.println("----- FEET TESTS -----");
+        demonstrateFeetEquality();
+
+        System.out.println("\n----- INCHES TESTS -----");
+        demonstrateInchesEquality();
+    }
+}
